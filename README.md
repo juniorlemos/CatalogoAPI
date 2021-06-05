@@ -9,5 +9,5 @@ Tecnologias e Conceitos Utilizados
 - Framework dotnet core 5 
 - Banco de dados Mysql 
 - Entity framework
-- 
+
  
