@@ -1,3 +1,13 @@
 # CatalogoAPI
 
-API RESTFUL de catálogos em desenvolvimento utilizando todos os conceitos do Net.Core  aprendidos nos  meus estudos
+API RESTFUL de catálogos utilizando todos os conceitos do Net.Core  aprendidos nos  meus estudos
+
+- Ainda em desenvolvimento
+
+Tecnologias e Conceitos Utilizados
+
+- Framework dotnet core 5 
+- Banco de dados Mysql 
+- Entity framework
+- 
+ 
