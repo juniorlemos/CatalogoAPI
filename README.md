@@ -1,6 +1,6 @@
 # CatalogoAPI
 
-API RESTFUL de catálogos utilizando todos os conceitos do Net.Core  aprendidos nos  meus estudos
+API RESTFUL de catálogos utilizando todos os conceitos do Framework Net.Core  aprendidos nos  meus estudos
 
 - Ainda em desenvolvimento
 
