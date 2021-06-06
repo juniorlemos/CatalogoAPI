@@ -9,6 +9,7 @@ using CatalogoAPI.Context;
 using CatalogoAPI.Models;
 using AutoMapper;
 using CatalogoAPI.DTOs;
+using Canducci.Pagination;
 
 namespace CatalogoAPI.Controllers
 {
@@ -48,6 +49,26 @@ namespace CatalogoAPI.Controllers
             var produtoDto = _mapper.Map<ProdutoDTO>(produto);
             return produtoDto;
         }
+        // Ação de paginação dos dados
+
+        [HttpGet("page/{page?}")]
+        public async Task<IActionResult> GetSourcePaginated(int? page)
+        {
+            page ??= 1;
+            if (page <= 0) page = 1;
+
+            var produtos = await _context.Produtos.ToListAsync();
+            var produtosDTo = _mapper.Map<List<ProdutoDTO>>(produtos);
+
+             var result= produtosDTo
+               .OrderBy(c => c.ProdutoId)
+               .ToPaginatedRest(page.Value, 10);
+
+           
+            return Ok(result);
+        }
+
+
 
         // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -31,24 +31,32 @@ namespace CatalogoAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetCategorias()
         {
-            var categorias = await _context.Categorias.Include(x=> x.Produtos).AsNoTracking().ToListAsync();
+            var categorias = await _context.Categorias.Include(x => x.Produtos).AsNoTracking().ToListAsync();
             var categoriasDto = _mapper.Map<List<CategoriaDTO>>(categorias);
             return categoriasDto;
         }
 
-
+        // Ação de paginação dos dados
 
         [HttpGet("page/{page?}")]
-        public async Task<IActionResult> GetSourcePaginated(int? page)
+        public async Task<IActionResult> GetSourcePaginated(int? page )
         {
             page ??= 1;
             if (page <= 0) page = 1;
 
-            var result = await _context.Categorias
-               .AsNoTracking()
+
+
+             var categorias = await _context.Categorias.Include(x => x.Produtos).AsNoTracking().ToListAsync();
+            var categoriasDTo = _mapper.Map<List<CategoriaDTO>>(categorias);
+
+             var result= categoriasDTo
                .OrderBy(c => c.CategoriaId)
-               .ToPaginatedRestAsync(page.Value, 10);
-            return Ok(result);
+               .ToPaginatedRest(page.Value, 10);
+
+           
+           return Ok(result);
+
+
         }
 
 
