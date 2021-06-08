@@ -10,6 +10,7 @@ Tecnologias e Conceitos Utilizados
 - Banco de dados Mysql 
 - Entity framework
 - Identity
+- Token JWT
 
 
 
