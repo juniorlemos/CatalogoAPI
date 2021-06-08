@@ -10,9 +10,11 @@ using CatalogoAPI.Models;
 using AutoMapper;
 using CatalogoAPI.DTOs;
 using Canducci.Pagination;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CatalogoAPI.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase
