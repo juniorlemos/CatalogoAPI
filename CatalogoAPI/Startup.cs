@@ -1,6 +1,8 @@
 using AutoMapper;
 using CatalogoAPI.Context;
 using CatalogoAPI.DTOs.Mappings;
+using CatalogoAPI.Models;
+using CatalogoAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,9 +18,12 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace CatalogoAPI
 {
@@ -32,8 +37,14 @@ namespace CatalogoAPI
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            
+           
+            
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -67,8 +78,29 @@ namespace CatalogoAPI
                         Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
 
                 });
-            
-            
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "APICatalogo",
+                    Description = "Catálogo de Produtos e Categorias",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Fernando Cesar",
+                        Email = "juniorlemosoi@gmail.com",
+                        Url = new Uri("https://github.com/juniorlemos"),
+
+                    },
+
+                });
+
+                c.SchemaFilter<RemoveSchemas>();
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
             services.AddControllers();
            
         }
@@ -86,9 +118,27 @@ namespace CatalogoAPI
 
             app.UseRouting();
 
+           
+
             app.UseAuthentication();
+          
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {          
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                "APICatalogo");
+                c.DefaultModelsExpandDepth(1);
+
+            }
+            
+            
+            );
+
+            
 
             app.UseEndpoints(endpoints =>
             {

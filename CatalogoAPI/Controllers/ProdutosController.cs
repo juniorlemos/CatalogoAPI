@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CatalogoAPI.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    //[Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase

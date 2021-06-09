@@ -11,12 +11,15 @@ using AutoMapper;
 using CatalogoAPI.DTOs;
 using Canducci.Pagination;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace CatalogoAPI.Controllers
 {
-    [Authorize(AuthenticationSchemes="Bearer")]
+   // [Authorize(AuthenticationSchemes="Bearer")]
     [Route("api/[controller]")]
     [ApiController]
+    
+   
     public class CategoriasController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -29,6 +32,9 @@ namespace CatalogoAPI.Controllers
         }
 
         // GET: api/Categorias
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetCategorias()
         {
@@ -37,7 +43,9 @@ namespace CatalogoAPI.Controllers
             return categoriasDto;
         }
 
-        // Ação de paginação dos dados
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
 
         [HttpGet("page/{page?}")]
         public async Task<IActionResult> GetSourcePaginated(int? page )
@@ -63,6 +71,9 @@ namespace CatalogoAPI.Controllers
 
 
         // GET: api/Categorias/5
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaDTO>> GetCategoria(int id)
         {
@@ -79,6 +90,9 @@ namespace CatalogoAPI.Controllers
 
         // PUT: api/Categorias/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategoria(int id, [FromBody]CategoriaDTO categoriaDto)
         {
@@ -111,6 +125,9 @@ namespace CatalogoAPI.Controllers
 
         // POST: api/Categorias
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
         [HttpPost]
         public async Task<ActionResult<Categoria>> PostCategoria( [FromBody]CategoriaDTO categoriaDto)
         {
@@ -126,6 +143,9 @@ namespace CatalogoAPI.Controllers
         }
 
         // DELETE: api/Categorias/5
+        /// <summary>
+        /// Obtem todas as Categorias.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategoria(int id)
         {

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CatalogoAPI</name>
+    </assembly>
+    <members>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.GetCategorias">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.GetSourcePaginated(System.Nullable{System.Int32})">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.GetCategoria(System.Int32)">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.PutCategoria(System.Int32,CatalogoAPI.DTOs.CategoriaDTO)">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.PostCategoria(CatalogoAPI.DTOs.CategoriaDTO)">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+        <member name="M:CatalogoAPI.Controllers.CategoriasController.DeleteCategoria(System.Int32)">
+            <summary>
+            Obtem todas as Categorias.
+            </summary>
+        </member>
+    </members>
+</doc>
