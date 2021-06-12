@@ -4,13 +4,15 @@ API RESTFUL de catálogos utilizando todos os conceitos do Framework Net.Core  a
 
 - Ainda em desenvolvimento
 
-Tecnologias  Utilizados
+Tecnologias  Utilizadas
 
 - Framework dotnet core 5 
 - Banco de dados Mysql 
 - Entity framework
 - Identity
 - Token JWT
+- Swagger
+- AutoMapper
 
 
 
