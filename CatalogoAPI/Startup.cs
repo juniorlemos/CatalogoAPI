@@ -2,7 +2,7 @@ using AutoMapper;
 using CatalogoAPI.Context;
 using CatalogoAPI.DTOs.Mappings;
 using CatalogoAPI.Models;
-using CatalogoAPI.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -63,6 +63,7 @@ namespace CatalogoAPI
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+
             services.AddAuthentication(
                 JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -93,13 +94,19 @@ namespace CatalogoAPI
                         Url = new Uri("https://github.com/juniorlemos"),
 
                     },
+                  
 
-                });
 
-                c.SchemaFilter<RemoveSchemas>();
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                }) ;
+
+                
+                
+               var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+              var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+               c.IncludeXmlComments(xmlPath);
+
+             
+
             });
             services.AddControllers();
            
@@ -131,7 +138,7 @@ namespace CatalogoAPI
             {          
                 c.SwaggerEndpoint("/swagger/v1/swagger.json",
                 "APICatalogo");
-                c.DefaultModelsExpandDepth(1);
+               
 
             }
             

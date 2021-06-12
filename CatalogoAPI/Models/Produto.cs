@@ -38,8 +38,9 @@ namespace CatalogoAPI.Models
         [Required]
         [StringLength(300, MinimumLength = 10)]
         public string ImagemUrl { get; set; }
-    
+       
         public float Estoque { get; set; }
+      
         public DateTime DataCadastro { get; set; }
 
 

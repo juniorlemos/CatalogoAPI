@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace CatalogoAPI.Controllers
 {
+    [Produces("application/json")]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     [ApiController]
     public class AutorizaController : ControllerBase
@@ -30,6 +32,12 @@ namespace CatalogoAPI.Controllers
             _configuration = iconfiguration;
         }
 
+        /// <summary>
+        /// Registra um novo usuário
+        /// </summary>
+        /// <param name="model">Um objeto UsuarioDTO</param>
+        /// <returns>Status 200 e o token para o cliente</returns>
+        /// <remarks>retorna o Status 200 e o token para  novo cliente</remarks>
         [HttpPost("Register")]
         public async Task<ActionResult> RegisterUser([FromBody] UsuarioDTO model)
         {
@@ -48,6 +56,12 @@ namespace CatalogoAPI.Controllers
             await _signInManager.SignInAsync(user, false);
             return Ok(GeraToken(model));
         }
+        /// <summary>
+        /// Verifica as credenciais de um usuário
+        /// </summary>
+        /// <param name="userInfo">Um objeot do tipo UsuarioDTO</param>
+        /// <returns>Status 200 e o token para o cliente</returns>
+
         [HttpPost("Login")]
         public async Task<ActionResult> Login([FromBody] UsuarioDTO userInfo)
         {

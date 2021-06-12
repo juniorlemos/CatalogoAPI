@@ -15,7 +15,10 @@ using Microsoft.AspNetCore.Cors;
 
 namespace CatalogoAPI.Controllers
 {
-   // [Authorize(AuthenticationSchemes="Bearer")]
+    [Authorize(AuthenticationSchemes="Bearer")]
+    [Produces("application/json")]
+    [ApiConventionType(typeof(DefaultApiConventions))]
+
     [Route("api/[controller]")]
     [ApiController]
     
@@ -35,6 +38,8 @@ namespace CatalogoAPI.Controllers
         /// <summary>
         /// Obtem todas as Categorias.
         /// </summary>
+        /// <returns> Todos os Objetos Categorias </returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoriaDTO>>> GetCategorias()
         {
@@ -44,8 +49,10 @@ namespace CatalogoAPI.Controllers
         }
 
         /// <summary>
-        /// Obtem todas as Categorias.
+        /// Obtem  Categorias através da página especificada.
         /// </summary>
+        /// /// <param name="Page"></param>
+        /// <returns>10 Objetos Categoria da pagina </returns>
 
         [HttpGet("page/{page?}")]
         public async Task<IActionResult> GetSourcePaginated(int? page )
@@ -72,8 +79,11 @@ namespace CatalogoAPI.Controllers
 
         // GET: api/Categorias/5
         /// <summary>
-        /// Obtem todas as Categorias.
+        /// Obtem uma Categoria pelo seu id.
         /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Objetos Categoria</returns>
+
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaDTO>> GetCategoria(int id)
         {
@@ -85,14 +95,22 @@ namespace CatalogoAPI.Controllers
             }
             var categoriaDto = _mapper.Map<CategoriaDTO>(categoria);
             return categoriaDto;
-             
+
         }
 
         // PUT: api/Categorias/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /// <summary>
-        /// Obtem todas as Categorias.
+        /// Modifica uma Categoria através do id.
         /// </summary>
+        /// <param name="id"></param>
+        /// <param name="categoriaDto"></param>
+        /// <returns>retorna 400 ou 200</returns>
+
+
+
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategoria(int id, [FromBody]CategoriaDTO categoriaDto)
         {
@@ -126,8 +144,22 @@ namespace CatalogoAPI.Controllers
         // POST: api/Categorias
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /// <summary>
-        /// Obtem todas as Categorias.
+        /// Insere uma nova Categoria.
         /// </summary>
+        /// /// <remarks>
+        /// Exemplo de  request:
+        ///
+        ///     POST /categorias
+        ///     {
+        ///        "Categoriaid": 1,
+        ///        "name": "Categoria",
+        ///        "ImagemURL": "http://teste.net/1.jpg" 
+        ///     }
+        ///
+        /// </remarks>
+        /// <returns>O objeto Categoria incluida</returns>
+        /// <remarks>Retorna um objeto Categoria incluído</remarks>
+
         [HttpPost]
         public async Task<ActionResult<Categoria>> PostCategoria( [FromBody]CategoriaDTO categoriaDto)
         {
@@ -144,8 +176,11 @@ namespace CatalogoAPI.Controllers
 
         // DELETE: api/Categorias/5
         /// <summary>
-        /// Obtem todas as Categorias.
+        /// Deleta uma Categoria.
         /// </summary>
+        ///  <param name="id"> Código da categoria  </param>
+       /// <returns></returns>
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategoria(int id)
         {

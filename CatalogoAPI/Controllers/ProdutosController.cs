@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace CatalogoAPI.Controllers
 {
     //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Produces ("application/json")] 
+   [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController : ControllerBase
@@ -28,7 +30,12 @@ namespace CatalogoAPI.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/Produtos
+
+        /// <summary>
+        /// Obtem todos os Produtos.
+        /// </summary>
+        /// <returns> Todos os Objetos Produtos </returns>
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProdutoDTO>>> GetProdutos()
         {
@@ -36,8 +43,12 @@ namespace CatalogoAPI.Controllers
             var produtosDto = _mapper.Map<List<ProdutoDTO>>(produtos);
             return produtosDto;
         }
-
-        // GET: api/Produtos/5
+        /// <summary>
+        /// <summary>
+        /// Obtem um Produto pelo seu id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Objetos Produtos</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<ProdutoDTO>> GetProduto(int id)
         {
@@ -51,8 +62,12 @@ namespace CatalogoAPI.Controllers
             var produtoDto = _mapper.Map<ProdutoDTO>(produto);
             return produtoDto;
         }
-        // Ação de paginação dos dados
 
+        /// <summary>
+        /// Obtem  Produtos através da página especificada.
+        /// </summary>
+        /// /// <param name="Page"></param>
+        /// <returns>10 Objetos Produtos da pagina </returns>
         [HttpGet("page/{page?}")]
         public async Task<IActionResult> GetSourcePaginated(int? page)
         {
@@ -74,6 +89,12 @@ namespace CatalogoAPI.Controllers
 
         // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Modifica um Produto através do id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="produtoDto"></param>
+        /// <returns>retorna 400 ou 200</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduto(int id,[FromBody] ProdutoDTO produtoDto)
         {
@@ -105,7 +126,27 @@ namespace CatalogoAPI.Controllers
         }
 
         // POST: api/Produtos
+
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Insere um novo produto
+        /// </summary>
+        /// /// <remarks>
+        /// Exemplo de  request:
+        ///
+        ///     POST /produtos
+        ///     {
+        ///        "Produtoid": 1,
+        ///        "name": "Categoria",
+        ///        "Descricao": "Um simples produto",
+        ///        "Preco": "50,00",
+        ///        "ImagemURL": "http://teste.net/1.jpg" 
+        ///        "CategoriaId": "1",
+        ///     }
+        /// </remarks>
+        /// <returns>O objeto Produto incluido</returns>
+        /// <remarks>Retorna um objeto Produto incluído</remarks>
+
         [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto([FromBody]ProdutoDTO produtoDto)
         {
@@ -121,6 +162,12 @@ namespace CatalogoAPI.Controllers
         }
 
         // DELETE: api/Produtos/5
+
+        /// <summary>
+        /// Deleta um Produto.
+        /// </summary>
+        ///  <param name="id"> Código do produto </param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
