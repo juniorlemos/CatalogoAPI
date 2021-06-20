@@ -78,7 +78,13 @@
             </summary>
             <returns> Todos os Objetos Produtos </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:CatalogoAPI.Controllers.ProdutosController.GetProduto(System.Int32)" -->
+        <member name="M:CatalogoAPI.Controllers.ProdutosController.GetProduto(System.Int32)">
+            <summary>
+            Obtem um Produto pelo seu id.
+            </summary>
+            <param name="id"></param>
+            <returns>Objetos Produtos</returns>
+        </member>
         <member name="M:CatalogoAPI.Controllers.ProdutosController.GetSourcePaginated(System.Nullable{System.Int32})">
             <summary>
             Obtem  Produtos através da página especificada.

@@ -82,6 +82,9 @@ namespace CatalogoAPI
 
             services.AddSwaggerGen(c =>
             {
+                c.MapType<Produto>(() => new OpenApiSchema { Type = "string" });
+                c.MapType<Categoria>(() => new OpenApiSchema { Type = "string" });
+                c.MapType<ProblemDetails>(() => new OpenApiSchema { Type = "string" });
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -101,7 +104,7 @@ namespace CatalogoAPI
 
                 
                 
-               var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+              var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
               var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                c.IncludeXmlComments(xmlPath);
 

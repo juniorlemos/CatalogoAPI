@@ -43,7 +43,7 @@ namespace CatalogoAPI.Controllers
             var produtosDto = _mapper.Map<List<ProdutoDTO>>(produtos);
             return produtosDto;
         }
-        /// <summary>
+        
         /// <summary>
         /// Obtem um Produto pelo seu id.
         /// </summary>
