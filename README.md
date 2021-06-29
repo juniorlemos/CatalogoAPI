@@ -26,9 +26,13 @@ obs: Para ter acesso as outras requisições é preciso se registrar e fazer o l
  Categorias
  
  GET     /api/Categorias               -Obtém todas as Categorias.
+ 
  POST    /api/Categorias               -Insere uma nova Categoria
+ 
  GET     /api/Categorias/page/{page}   -Obtém as Categorias através de Paginação
+ 
  GET     /api/Categorias/{id}          -Obtém uma Categoria através do ID
+ 
  PUT     /api/Categorias/{id}          -Modifica uma Categoria através do ID
  DELETE  /api/Categorias/{id}          -Deleta uma Categoria
  
