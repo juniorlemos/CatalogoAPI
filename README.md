@@ -19,6 +19,7 @@ Tecnologias  Utilizadas
   Autorização 
  
  POST /api/Autoriza/Register   -Registra um novo usuário
+ 
  POST /api/Autoriza/Login      -Verifica as credenciais do usuário
 
 obs: Para ter acesso as outras requisições é preciso se registrar e fazer o login com as requisições acima
@@ -34,15 +35,21 @@ obs: Para ter acesso as outras requisições é preciso se registrar e fazer o l
  GET     /api/Categorias/{id}          -Obtém uma Categoria através do ID
  
  PUT     /api/Categorias/{id}          -Modifica uma Categoria através do ID
+ 
  DELETE  /api/Categorias/{id}          -Deleta uma Categoria
  
   Produtos
  
  GET     /api/Produtos               -Obtém todos os Produtos.
+ 
  POST    /api/Produtos               -Insere um novo Produto
+ 
  GET     /api/Produtos/page/{page}   -Obtém os Produtos através de Paginação
+ 
  GET     /api/Produtos/{id}          -Obtém um Produto através do ID
+ 
  PUT     /api/Produtos/{id}          -Modifica um Produto através do ID
+ 
  DELETE  /api/Produtos/{id}          -Deleta um Produto
 
 
