@@ -13,6 +13,10 @@ Tecnologias  Utilizadas
 - Token JWT
 - Swagger
 - AutoMapper
+- Postman - Utilizado para alguns testes
+
+
+
 
  Requisições da API
  
